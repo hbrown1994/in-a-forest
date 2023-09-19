@@ -26,7 +26,7 @@
 
 	inputComp = List.new;
 
-	inputWindow = Window.new("Inputs", Rect(0, 0, 1200, 500)).front;
+	inputWindow = Window.new("Inputs", Rect(0, 600, 1200, 500)).front;
 	inputWindow.view.decorator = FlowLayout( inputWindow.view.bounds, 0@0, 0@0 );
 
 	resetButtons = List.new;

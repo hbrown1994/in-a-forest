@@ -5,13 +5,15 @@
 		\filterWindows, Dictionary.new, \filterButtons, Dictionary.new,
 		\amp, Dictionary.new, \ampNumbox, Dictionary.new, \trig, Dictionary.new,
 		\lpfOn, Dictionary.new, \lpfFreq, Dictionary.new, \lpfNumbox, Dictionary.new, \hpfOn, Dictionary.new, \hpfFreq, Dictionary.new, \hpfNumbox, Dictionary.new,
-		\routeButtons, Dictionary.new, \panSelMenu, Dictionary.new, \panFreqSlider, Dictionary.new, \panFreqNumbox, Dictionary.new
+		\routeButtons, Dictionary.new, \panSelMenu, Dictionary.new, \panFreqSlider, Dictionary.new, \panFreqNumbox, Dictionary.new, \window, nil
 	]);
 
 	numCompositeViews=~buffersNames[\spatial].size;
 
-	window = Window.new("spatial Samples", Rect(200.rand, 200.rand, 660, 530)).front;
+	window = Window.new("spatial Samples", Rect(0, 600, 660, 530)).front;
 	window.view.decorator = FlowLayout( window.view.bounds, 0@0, 0@0 );
+	~spatialGui[\window]=window;
+	~spatialGui[\window].visible = false;
 
 	numCompositeViews.do{|i| compositeViews.add(CompositeView( window.view, 220@640 ).background_( Color.red(val: ([0.8, 1.2]!3).flatten[i], alpha: 1.0) )) };
 
@@ -70,19 +72,7 @@
 		//palSel
 		~spatialGui[\panSelMenu].add(thisSample ->
 			PopUpMenu(i, Rect(10, 460, 500, 50))
-			.items_([
-				"Random",
-				"RandWalk_20%",
-				"RandWalk_40%",
-				"RandWalk_60%",
-				"RandWalk_80%",
-				"RandWalk_100%",
-				"Onset_RandWalk_20%",
-				"Onset_RandWalk_40%",
-				"Onset_RandWalk_60%",
-				"Onset_RandWalk_80%",
-				"Onset_RandWalk_100%",
-			])
+			.items_(["Broken Sine", "Random", "RandWalk_Narrow", "RandWalk_Mid", "RandWalk_Wide"])
 			.value_(0)
 			.action_({arg val;
 				~params[thisSample]['panSel']=val.value;

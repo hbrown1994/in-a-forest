@@ -6,13 +6,12 @@
 	var horizShift =70;
 
 	~forest0Gui = Dictionary.newFrom([
-		\paramSlider, Dictionary.new, \paramNumbox, Dictionary.new
+		\paramSlider, Dictionary.new, \paramNumbox, Dictionary.new,
 
 	]);
-	~forest0Gui.add(\window -> window = Window.new("Forest0", Rect(200.rand, 200.rand, 1350, 480)).front);
-
+	~forest0Gui.add(\window -> window = Window.new("Forest0", Rect(3, 600, 1350, 480)).front);
 	~forest0Gui[\window].background = Color.new255(196, 164, 132);
-
+	~forest0Gui[\window].visible = false;
 
 	~forest0Gui.add(\onOff -> Button(~forest0Gui[\window], Rect(5, 3, 60, 50))
 		.states_([["On", Color.black, Color.green], ["Off", Color.black, Color.red]])

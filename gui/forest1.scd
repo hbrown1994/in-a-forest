@@ -10,9 +10,9 @@
 
 	]);
 
-	~forest1Gui.add(\window -> window = Window.new("forest1", Rect(200.rand, 200.rand, 1350, 480)).front);
-
+	~forest1Gui.add(\window -> window = Window.new("forest1", Rect(3, 600, 1350, 480)).front);
 	~forest1Gui[\window].background = Color.new255(139,112,88);
+	~forest1Gui[\window].visible = false;
 
 
 	~forest1Gui.add(\onOff -> Button(~forest1Gui[\window], Rect(5, 3, 60, 50))

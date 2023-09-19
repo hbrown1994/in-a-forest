@@ -6,14 +6,17 @@
 		\filterWindows, Dictionary.new, \filterButtons, Dictionary.new,
 		\amp, Dictionary.new, \ampNumbox, Dictionary.new, \trig, Dictionary.new,
 		\lpfOn, Dictionary.new, \lpfFreq, Dictionary.new, \lpfNumbox, Dictionary.new, \hpfOn, Dictionary.new, \hpfFreq, Dictionary.new, \hpfNumbox, Dictionary.new,
-		\routeButtons, Dictionary.new
+		\routeButtons, Dictionary.new, \window, nil
 
 	]);
 
 	numCompositeViews=~buffersNames[\percussion].size;
 
-	window = Window.new("Perc Samples", Rect(200.rand, 200.rand, 1000, 640)).front;
+	window = Window.new("Perc Samples", Rect(0, 600, 1000, 640)).front;
 	window.view.decorator = FlowLayout( window.view.bounds, 0@0, 0@0 );
+	~percGui[\window] = window;
+	~percGui[\window].visible=false;
+
 
 	numCompositeViews.do{|i| compositeViews.add(CompositeView( window.view, 100@640 ).background_( Color.green(val: ([0.6, 0.8]!5).flatten[i], alpha: 1.0) )) };
 

@@ -6,13 +6,16 @@
 
 	~sineGui = Dictionary.newFrom([
 		\amp, Dictionary.new, \ampNumbox, Dictionary.new, \trig, Dictionary.new,
-		\routeButtons, Dictionary.new
+		\routeButtons, Dictionary.new, \window, nil
 	]);
 
 	numCompositeViews=sineFreqs.size;
 
-	window = Window.new("Sines", Rect(200.rand, 200.rand, 400, 610)).front;
+	window = Window.new("Sines", Rect(0, 600, 400, 610)).front;
 	window.view.decorator = FlowLayout( window.view.bounds, 0@0, 0@0 );
+	~sineGui[\window]=window;
+	~sineGui[\window].visible=false;
+
 
 	numCompositeViews.do{|i| compositeViews.add(CompositeView( window.view, 100@610 ).background_( Color.cyan(val: ([0.6, 0.8]!5).flatten[i], alpha: 1.0) )) };
 

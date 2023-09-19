@@ -39,12 +39,16 @@
 		\paramSlidersoctaver, Dictionary.new, \paramNumboxoctaver, Dictionary.new,
 		\paramSlidersreverb, Dictionary.new, \paramNumboxreverb, Dictionary.new,
 		\paramSlidersconvolution, Dictionary.new, \paramNumboxconvolution, Dictionary.new,
+		\window, nil
 	]);
 
 
 
-	window = Window.new("FXs", Rect(420, 600, 800, 500)).front;
+	window = Window.new("FXs", Rect(0, 600, 800, 500)).front;
 	window.view.decorator = FlowLayout( window.view.bounds, 0@0, 0@0 );
+	~fxGui[\window] = window;
+	~fxGui[\window].visible = false;
+
 
 	5.do{|i| comp.add(CompositeView( window.view, 160@500 ).background_( [Color.yellow(1.0), Color.cyan(1.0), Color.yellow(1.0), Color.cyan(1.0), Color.magenta][i] )) };
 

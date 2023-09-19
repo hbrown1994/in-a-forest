@@ -5,13 +5,16 @@
 		\filterWindows, Dictionary.new, \filterButtons, Dictionary.new,
 		\amp, Dictionary.new, \ampNumbox, Dictionary.new, \trig, Dictionary.new,
 		\lpfOn, Dictionary.new, \lpfFreq, Dictionary.new, \lpfNumbox, Dictionary.new, \hpfOn, Dictionary.new, \hpfFreq, Dictionary.new, \hpfNumbox, Dictionary.new,
-		\routeButtons, Dictionary.new
+		\routeButtons, Dictionary.new, \window, nil
 	]);
 
 	numCompositeViews=~buffersNames[\vox].size;
 
-	window = Window.new("Vox Samples", Rect(200.rand, 200.rand, 700, 640)).front;
+	window = Window.new("Vox Samples", Rect(0, 600, 700, 640)).front;
 	window.view.decorator = FlowLayout( window.view.bounds, 0@0, 0@0 );
+	~voxGui[\window]=window;
+	~voxGui[\window].visible=false;
+
 
 	numCompositeViews.do{|i| compositeViews.add(CompositeView( window.view, 100@640 ).background_( Color.yellow(val: ([0.6, 0.8]!5).flatten[i], alpha: 1.0) )) };
 
